@@ -12,11 +12,25 @@ repositories {
 	mavenCentral()
 }
 
+
+
 dependencies {
+	// for send application metrics
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+	// for rest services
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+	// vor testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// use log4j syntax for logging
+	implementation 'org.apache.logging.log4j:log4j-core:2.10.0'
+  // to enable JSON logging at console
+	implementation 'net.logstash.logback:logstash-logback-encoder:5.2'
+//  implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
+
 }
 
 test {
