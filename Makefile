@@ -36,7 +36,7 @@ tagAndPush: build
 cleanTagAndPush: cleanBuild tagAndPush
 
 deployPatchVersion:
-	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=docker.intra.vsa.de/noventi/test/spring-logging-test:${GEMATIK_GIT_TAG}${GEMATIK_DOCKER_TAG_EXT})
+	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=docker.intra.vsa.de/noventi/test/spring-logging-test:${DOCKER_TAG}${DOCKER_TAG_EXT})
 
 deployUnpatchVersion:
 	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG)

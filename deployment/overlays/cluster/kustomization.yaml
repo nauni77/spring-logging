@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+namespace: spring-logging-test
+
+#namePrefix: dev-
+#nameSuffix: "-001"
+#nameSuffix: -cluster
+
+## no patch files for merge are needed at the moment
+#patchesStrategicMerge:
+#- config.yaml
+
+resources:
+- ../../base
+
+images:
+- name: docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG
+  newName: docker.intra.vsa.de/noventi/test/spring-logging-test
+  newTag: UNSET_IMAGE_TAG

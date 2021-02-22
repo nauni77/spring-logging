@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-logging-test
+  namespace: spring-logging-test
+  labels:
+    app: spring-logging-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-logging-test
+  template:
+    metadata:
+      labels:
+        app: spring-logging-test
+    spec:
+      containers:
+        - name: spring-logging-test
+          imagePullPolicy: IfNotPresent
+          image: docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG
+          ports:
+            - containerPort: 8080

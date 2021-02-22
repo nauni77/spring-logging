@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: spring-logging-test
+  namespace: spring-logging-test
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /epres/search
+#    nginx.ingress.kubernetes.io/app-root: /gerda/
+spec:
+  tls:
+    - hosts:
+      - spring-logging-test.intra.vsa.de
+      secretName: intra-vsa-de
+  rules:
+    - host: spring-logging-test.intra.vsa.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rest-service
+              servicePort: 8080
