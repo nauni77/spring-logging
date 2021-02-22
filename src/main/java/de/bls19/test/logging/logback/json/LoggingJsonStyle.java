@@ -10,7 +10,7 @@ public class LoggingJsonStyle {
 
   private static final Logger LOGGER = LogManager.getLogger(LoggingJsonStyle.class);
 
-  @Scheduled(fixedRate = 1000)
+  @Scheduled(fixedRate = 30000)
   public void logMessage() {
     LOGGER.info("json style is still logging ...");
   }

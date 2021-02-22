@@ -11,7 +11,7 @@ public class LoggingDefaultStyle {
 
   private static final Logger LOGGER = LogManager.getLogger(LoggingDefaultStyle.class);
 
-  @Scheduled(fixedRate = 1000)
+  @Scheduled(fixedRate = 30000)
   public void logMessage() {
     LOGGER.info("default style is still logging ...");
   }
