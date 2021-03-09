@@ -12,6 +12,11 @@ spec:
       app: spring-logging-test
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8080"
       labels:
         app: spring-logging-test
     spec:
