@@ -3,7 +3,7 @@
 
 .EXPORT_ALL_VARIABLES:
 DOCKER_TAG = 0.1
-DOCKER_TAG_EXT = _2
+DOCKER_TAG_EXT = _3
 
 echo:
 	echo "DOCKER_TAG: ${DOCKER_TAG}"
@@ -53,6 +53,9 @@ doAll: build tagAndPush deploy
 
 run:
 	docker run --rm --name spring-logging-test -v ${PWD}/exchange:/exchange -p 8080:8080 spring-logging-test:dev
+
+stop:
+	docker stop spring-logging-test
 
 exec:
 	docker exec --user bls19 -ti spring-logging-test /bin/bash
