@@ -6,3 +6,7 @@ management:
           - prometheus
           - health
           - info
+
+  metrics:
+    tags:
+      application: spring-logging-test
