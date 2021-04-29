@@ -3,7 +3,9 @@
 
 .EXPORT_ALL_VARIABLES:
 DOCKER_TAG = 0.1
-DOCKER_TAG_EXT = _4
+DOCKER_TAG_EXT = _5
+#IMAGE_NAME = vsa-docker.intra.vsa.de/noventi/test/spring-logging-test
+IMAGE_NAME = nauni1977/spring-logging-test
 
 echo:
 	echo "DOCKER_TAG: ${DOCKER_TAG}"
@@ -30,13 +32,13 @@ build:
 cleanBuild: clean build
 
 tagAndPush: build
-	docker tag spring-logging-test:dev vsa-docker.intra.vsa.de/noventi/test/spring-logging-test:${DOCKER_TAG}${DOCKER_TAG_EXT}
-	docker push vsa-docker.intra.vsa.de/noventi/test/spring-logging-test:${DOCKER_TAG}${DOCKER_TAG_EXT}
+	docker tag spring-logging-test:dev ${IMAGE_NAME}:${DOCKER_TAG}${DOCKER_TAG_EXT}
+	docker push ${IMAGE_NAME}:${DOCKER_TAG}${DOCKER_TAG_EXT}
 
 cleanTagAndPush: cleanBuild tagAndPush
 
 deployPatchVersion:
-	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=docker.intra.vsa.de/noventi/test/spring-logging-test:${DOCKER_TAG}${DOCKER_TAG_EXT})
+	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=${IMAGE_NAME}:${DOCKER_TAG}${DOCKER_TAG_EXT})
 
 deployUnpatchVersion:
 	(cd deployment/overlays/cluster; kustomize edit set image docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG=docker.intra.vsa.de/noventi/test/spring-logging-test:UNSET_IMAGE_TAG)
