@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.3'
+	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
@@ -10,6 +10,7 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+//	maven { url "https://repo.intra.vsa.de/artifactory/maven/" }
 }
 
 
@@ -26,9 +27,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	// use log4j syntax for logging
-	implementation 'org.apache.logging.log4j:log4j-core:2.10.0'
+	implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
   // to enable JSON logging at console
-	implementation 'net.logstash.logback:logstash-logback-encoder:5.2'
+	implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
 //  implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
 
 }
